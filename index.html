@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exchange Rates</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@200;400;600;700&family=Prompt:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="src/normalize.css">
+    <link rel="stylesheet" href="src/styles.css">
+</head>
+<body>
+    <header>
+        <h1>
+            <a href="index.html" class="logo">Rately</a>
+        </h1>
+    </header>
+
+    <main>
+        <form action="" id="exchange-form">
+            <fieldset>
+                <legend>Choose the date and base<span>to see the rates</span></legend>
+                <input type="date" name="date" id="date" min="1999-01-01">
+                <label for="base">
+                    <p>Euro</p>
+                    <div class="switch">
+                        <input type="checkbox" name="base" id="base">
+                        <div class="slider"></div>
+                    </div>
+                    <p>USD</p>
+                </label>
+                <input type="submit" value="Get Rates" id="submit">
+            </fieldset>
+        </form>
+        
+        <div class="grid exhcange-rates">
+
+        </div>
+    </main>
+
+    <!-- <footer>
+            Exchange Rate - Project by MARMATVA
+    </footer> -->
+
+    <script src="src/app.js"></script>
+</body>
+</html>
