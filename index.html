@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="src/normalize.css">
     <link rel="stylesheet" href="src/styles.css">
 </head>
-<body>
+<body class="vpheight">
     <header>
         <h1>
             <a href="index.html" class="logo">Rately</a>
@@ -21,14 +21,17 @@
     </header>
 
     <main>
-        <form action="" id="exchange-form">
+        <form action="" name="exchange-form" id="exchange-form">
             <fieldset>
                 <legend>Choose the date and base<span>to see the rates</span></legend>
-                <input type="date" name="date" id="date" min="1999-01-01">
-                <label for="base">
+                <label for="date">
+                    <input type="date" name="date" id="date" min="1999-01-01">
+                </label>
+                
+                <label for="base" class="base-label">
                     <p>Euro</p>
                     <div class="switch">
-                        <input type="checkbox" name="base" id="base">
+                        <input type="checkbox" name="base" id="base" value="USD">
                         <div class="slider"></div>
                     </div>
                     <p>USD</p>
@@ -37,7 +40,7 @@
             </fieldset>
         </form>
         
-        <div class="grid exhcange-rates">
+        <div class="grid exchange-rates">
 
         </div>
     </main>

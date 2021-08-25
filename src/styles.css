@@ -2,6 +2,8 @@
     --black: #000;
     --white: #FFF;
     --blue: #0065fd;
+    --red: #ff4b4b;
+    --gray: #aaa;
     --fontFst: 'Prompt', sans-serif;
     --fontSecnd:'Barlow', sans-serif;
 }
@@ -10,6 +12,9 @@ body, html{
     font-size: 62.5%;
     box-sizing: border-box;
     font-family: var(--fontSecnd);
+}
+
+.vpheight{
     height: 100vh;
 }
 
@@ -89,13 +94,17 @@ fieldset input{
     margin: 2rem auto;
 }
 
+
 label{
     margin: 0 auto;
+}
+
+.base-label{
     display: flex;
     align-items: center;
 }
 
-label > *{
+.base-label > *{
     margin: 0 2rem;
 }
 
@@ -138,7 +147,7 @@ label > *{
 #base{
     opacity: 0;
     width: 0;
-    height: 0;;
+    height: 0;
 }
 
 #base:checked + .slider::before{
@@ -148,6 +157,68 @@ label > *{
 #submit:hover{
     cursor: pointer;
 }
+
+.invalid{
+    border: 1px solid var(--red);
+    color: var(--red);
+    margin-bottom: 0;
+
+    /* background-color: var(--red); */
+}
+
+.invalid + p{
+    font-size: 1.2rem;
+    margin: 0;
+    margin-top: .5rem;
+    color: var(--red);
+    padding: 0 .5rem;
+    text-align: center;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20% auto;
+}
+
+.loader{
+    width: 9rem;
+    height: 9rem;
+    border: .9rem solid var(--gray);
+    border-top: .9rem solid var(--blue);
+    border-radius: 50%;
+    animation: spinWheel 1s linear infinite;
+    margin: 2rem;
+}
+
+.message{
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+@keyframes spinWheel {
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+
+.currencies-grid{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto;
+    gap: 1.5rem;
+    margin: 3rem 1.5rem;
+    height: 100%;
+}
+
+.wider-main{
+    width: 90%;
+}
+
 
 /* footer{
     padding: 1rem;
