@@ -41,11 +41,7 @@ function getFormInfo(){
     let date = form.date.value;
     if(validateForm(date)){
         let base;
-        if(form.base.checked){
-            base="USD";
-        } else{
-            base="EUR";
-        } 
+        (form.base.checked) ? base="USD" : base="EUR";
 
         let url=`${api}${date}${apiKey}`;
         
@@ -64,35 +60,55 @@ function getFormInfo(){
 
 function displayRates(response, base){
     console.log(response);
+    response = (base != "EUR") ? convertRates(response, base) : response;
+
+    console.log(response);
     console.log(base);
 
     let currencies = Object.keys(response);
+
     let grid = document.createElement('DIV');
     grid.classList.add('currencies-grid');
-
+    
     currencies.forEach( currency => {
+        
         let card = document.createElement("DIV");
-        card.classList.add("container"); //OJO con el Style
+        card.classList.add("container", "card");
+
 
         let symbol = document.createElement('H3');
         symbol.appendChild(document.createTextNode(currency));
 
         let value = document.createElement('P');
-        valueText = document.createTextNode("€" + response[currency]);
+        let rateValue = document.createElement('SPAN');
+        rateValue.appendChild(document.createTextNode(response[currency] + " " + currency))
+        let unit = (base == "EUR") ? "€ 1  =" : "$ 1  =";
+        let valueText = document.createTextNode(unit);
         value.appendChild(valueText);
+        value.appendChild(rateValue);
 
         card.appendChild(symbol);
         card.appendChild(value);
 
         grid.appendChild(card);
     })
+
     removeLoadingAndReStyleMain();
     let gridContainer = document.querySelector("div.exchange-rates");
-    gridContainer.classList.add('container'); //OJO con el Style
+    gridContainer.classList.add('container');
     gridContainer.appendChild(grid);
 
     
 }
+
+function convertRates(response, base){
+    let ratio = 1/response[base];
+    let currencies = Object.keys(response);
+    currencies.forEach( currency => response[currency] *= ratio );
+    return response;
+}
+
+
 
 function validateForm(date){
     if(date.length==0){
@@ -133,7 +149,8 @@ function removeFormContent(){
 
 function createLoading(){
     let container = document.createElement('DIV');
-    container.classList.add('container');
+    container.classList.add('container', 'loading-container');
+
 
     let message = document.createElement('P');
     message.classList.add('message')
@@ -158,3 +175,12 @@ function removeLoadingAndReStyleMain(){
 startApp();
 
 
+// function roundRates(response){ //ELIMINAR
+//     for (const currency in response){
+//         let rounded = Math.round((response[currency] + Number.EPSILON) * 1000000) / 1000000;
+//         response[currency] = rounded;
+//     }
+    
+//     return response;
+    
+// }

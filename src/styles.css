@@ -179,6 +179,10 @@ label{
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin: 0 auto;
+}
+
+.loading-container{
     margin: 20% auto;
 }
 
@@ -208,17 +212,58 @@ label{
 
 .currencies-grid{
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     grid-template-rows: auto;
-    gap: 1.5rem;
+    gap: 2.5rem 3rem ;
     margin: 3rem 1.5rem;
     height: 100%;
+}
+
+@media (min-width: 700px) {
+    .currencies-grid{
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2.5rem 1.5rem ;
+    }
+}
+
+@media (min-width: 1100px) {
+    .currencies-grid{
+        grid-template-columns: repeat(6, 1fr);
+    }
 }
 
 .wider-main{
     width: 90%;
 }
 
+.card{
+    width: 100%;
+    padding: 2rem;
+    flex: 1 1 auto;
+    justify-content: space-evenly;
+    border-radius: 1rem;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+
+.card h3{
+    color: var(--blue);
+    font-size: 3rem;
+    margin: 1.5rem 0;
+    font-weight: 700;
+}
+ 
+.card p{
+    font-size: 2rem;
+    text-align: center;
+    line-height: 1.5;
+    margin: 1rem 0;
+} 
+
+.card span{
+    display: block;
+    font-size: 2.4rem;
+    font-weight: 500;
+}
 
 /* footer{
     padding: 1rem;
