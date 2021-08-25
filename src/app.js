@@ -54,16 +54,11 @@ function getFormInfo(){
         showLoading();
 
     }
-  
 
 }
 
 function displayRates(response, base){
-    console.log(response);
     response = (base != "EUR") ? convertRates(response, base) : response;
-
-    console.log(response);
-    console.log(base);
 
     let currencies = Object.keys(response);
 
@@ -81,7 +76,10 @@ function displayRates(response, base){
 
         let value = document.createElement('P');
         let rateValue = document.createElement('SPAN');
-        rateValue.appendChild(document.createTextNode(response[currency] + " " + currency))
+        rateValue.appendChild(document.createTextNode(response[currency]));
+        let coin = document.createElement('SPAN');
+        coin.appendChild(document.createTextNode(currency));
+        rateValue.appendChild(coin);
         let unit = (base == "EUR") ? "€ 1  =" : "$ 1  =";
         let valueText = document.createTextNode(unit);
         value.appendChild(valueText);
@@ -107,8 +105,6 @@ function convertRates(response, base){
     currencies.forEach( currency => response[currency] *= ratio );
     return response;
 }
-
-
 
 function validateForm(date){
     if(date.length==0){
