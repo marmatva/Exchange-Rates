@@ -1,0 +1,24 @@
+{
+  "name": "exchange-rates",
+  "version": "1.0.0",
+  "description": "Exchnage Rate Informative Page Project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "cypress-dev": "cypress open",
+    "server": "http-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marmatva/Exchange-Rates.git"
+  },
+  "author": "Marina Matilla Vandevelde",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/marmatva/Exchange-Rates/issues"
+  },
+  "homepage": "https://github.com/marmatva/Exchange-Rates#readme",
+  "devDependencies": {
+    "cypress": "^8.3.0"
+  }
+}
