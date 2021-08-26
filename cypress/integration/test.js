@@ -41,15 +41,15 @@ describe('Test Form Validation', ()=>{
 
         cy.get('fieldset').should('not.exist');
         cy.get('.loading-container').should('have.text', "Loading Results...");
-        cy.get('.loading-container').find('.loader').should('exist');
+        cy.get('.loading-container').find('.loader').should('be.visible');
 
         cy.get('.loading-container').should('not.exist');
-        cy.get('.currencies-grid').should('exist');
+        cy.get('.currencies-grid').should('be.visible');
 
     })
 })
 
-describe('Test the main ffunctionality', ()=>{
+describe('Test the main functionality', ()=>{
     
     it('Enters valid date and request EUR rates', ()=>{
         cy.reload();
@@ -58,6 +58,18 @@ describe('Test the main ffunctionality', ()=>{
 
         cy.get('.currencies-grid').should('exist');
         cy.get('.card').should('have.length.above', 150);
+        cy.get('.card').should('contain', '€ 1  =');
+    })
+
+    it('Enters valid date and request USD rates', ()=>{
+        cy.reload();
+        cy.get('#date').type(todayFormat);
+        cy.get('.base-label').click();
+        cy.get('#submit').click();
+
+        cy.get('.currencies-grid').should('exist');
+        cy.get('.card').should('have.length.above', 150);
+        cy.get('.card').should('contain', '$ 1  =');
     })
 })
 
